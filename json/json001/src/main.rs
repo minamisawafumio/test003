@@ -12,7 +12,7 @@ struct Cities {
 
 fn main() {
     eprintln!("*** 開始 ***");
-    let file_name = "cities.json";
+    let file_name = "../cities.json";
 
     let file = File::open(file_name).unwrap();
     let reader = BufReader::new(file);
