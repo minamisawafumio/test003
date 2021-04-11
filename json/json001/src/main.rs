@@ -7,29 +7,31 @@ use std::collections::HashMap;
 #[derive(Serialize, Deserialize, Debug)]
 
 struct Cities {
-    cities: HashMap <String, HashMap<String,String>>
+    cities2: HashMap <String, HashMap<String,String>>
 }
 
 fn main() {
     eprintln!("*** 開始 ***");
-    let file_name = "../cities.json";
+    let file_name = "cities.json";
 
     let file = File::open(file_name).unwrap();
     let reader = BufReader::new(file);
 
-    let deserialized: Cities = serde_json::from_reader(reader).unwrap();
+    let w_cities: Cities = serde_json::from_reader(reader).unwrap();
 
 
-    for (key,value) in deserialized.cities.iter() {
-        print!("{}",key);
-        print!("\t");
-        print!("{}",value["name"]);
-        print!("\t");
-        print!("{}",value["population"]);
-        print!("\t");
-        println!("{}",value["date_mod"]);
-        }
+    print_json(w_cities);
 
 
     eprintln!("*** 終了 ***");
+
+
+
+}
+
+fn  print_json(target: Cities){
+    eprintln!("★★★*** 終了 ***");
+    for (key,value) in target.cities2.iter() {
+        print!("{}\t{}\t{}\t{}\n",key,value["name"],value["population"],value["date_mod"]);
+     }
 }

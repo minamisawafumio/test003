@@ -1,5 +1,5 @@
 {
-    "cities": {
+    "cities2": {
       "t0926": {
         "date_mod": "2005-5-9",
         "population": "92136",
@@ -17,7 +17,7 @@
       },
       "t0927": {
         "name": "さくら",
-        "population": "87658400",
+        "population": "876584",
         "date_mod": "2020-7-2"
       },
       "t0924": {
