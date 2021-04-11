@@ -15,7 +15,7 @@ fn main() {
         // The `description` method of `io::Error` returns a string that
         // describes the error
         // `io::Error`の`description`メソッドはエラーを説明する文字列を返す。
-        Err(why) => panic!("couldn't open {}: {}", display, why.description().to_string()),
+        Err(why) => panic!("couldn't open {}: {}", display, why.description()),
         Ok(file) => file,
     };
 
