@@ -1,0 +1,13 @@
+[package]
+name = "p07_20210530_012"
+version = "0.1.0"
+authors = ["minamisawafumio <fmsoft@yahoo.co.jp>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4"
+
+[lib]
+crate-type = ["cdylib"]

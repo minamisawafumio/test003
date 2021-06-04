@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>007_202105291847</title>
+  
+<script>
+  
+//ウインドウが開いた時に発動---------------------------------------------------
+window.onload = function() {
+  doStart();
+};
+//---------------------------------------------------------------------------
+function $(e) {
+    return document.getElementById(e);
+}
+//---------------------------------------------------------------------------
+function doStart(){
+  console.log("********doStart*******************");
+
+  const imports = {
+    env: {
+      date_now: Date.now,
+    },
+  }
+
+  const wasm='./target/wasm32-unknown-unknown/release/p07_20210530_012.wasm'
+  fetch(wasm)
+    .then((response) => response.arrayBuffer())
+    // `WebAssembly.instantiate` の引数に `imports` を追加
+    .then((bytes) => WebAssembly.instantiate(bytes, imports))
+    .then((results) => {
+      const { add1,add2,add3, get_timestamp  } = results.instance.exports
+
+      $('id_st_001').innerHTML = add1(5, 6);
+      $('id_st_002').innerHTML = add2(5, 6);
+      $('id_st_003').innerHTML = add3(5, 6);
+      $('id_time_001').innerHTML = get_timestamp();
+      $('mangaPic').innerHTML = "<img src='./images/img002.gif'><br>\n";
+  
+      //---------------------------------------------------------------------
+      $('btn001').addEventListener('click', function() {
+        $('id_time_001').innerHTML = get_timestamp();
+          $('id_st_001').innerHTML = add1(15, 16)  + Math.floor(Math.random() * 111);
+      }, false);
+
+      //---------------------------------------------------------------------
+      $('btn002').addEventListener('click', function() {
+        $('id_time_001').innerHTML = get_timestamp();
+        $('id_st_002').innerHTML = add2(25, 26)  + Math.floor(Math.random() * 222);
+      }, false);
+
+      //---------------------------------------------------------------------
+      $('btn003').addEventListener('click', function() {
+
+        $('id_time_001').innerHTML = get_timestamp();
+
+   
+        $('id_st_003').innerHTML = add3(35, 36)  + Math.floor(Math.random() * 333);
+      }, false);
+
+  });
+}
+  </script>
+
+</head>
+<body>
+ああああああいい
+      <div id='id_st_001'></div>
+      <div id='id_st_002'></div>
+      <div id='id_st_003'></div>
+      <div id='id_time_001'></div>
+
+			<div id='flickscroll'>
+				<ul id='mangaPic'></ul>
+			</div>
+
+    <div id='id_btn001'>
+      <button id="btn001">表示001</button>
+    </div>
+    <div id='id_btn002'>
+      <button id="btn002">表示002</button>
+    </div>
+    <div id='id_btn003'>
+      <button id="btn003">表示003</button>
+    </div>
+</body>
+</html>
