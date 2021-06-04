@@ -1,0 +1,15 @@
+[package]
+name = "api_example"
+version = "0.1.0"
+authors = ["南沢郁男 <fmsoft@yahoo.co.jp>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# actix-webのクレート群
+actix-web = "3"
+actix-cors = "0.5.3"
+# リクエスト/レスポンスのJSONをシリアライズ/デシリアライズする用
+serde = { version = "1.0", features = ["derive"] }
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>003_202105291847</title>
+
+<script>
+
+//ウインドウが開いた時に発動-------------------------------------------------------------------------------------------
+window.onload = function() {
+  doBBBBB();
+};
+
+function doBBBBB(){
+  console.log("********doBBBBB*******************");
+
+  const imports = {
+    env: {
+      date_now: Date.now,
+    },
+  }
+
+  let www;
+  const wasm='./target/wasm32-unknown-unknown/release/p06_20210530_001.wasm'
+  fetch(wasm)
+    .then((response) => response.arrayBuffer())
+    // `WebAssembly.instantiate` の引数に `imports` を追加
+    .then((bytes) => WebAssembly.instantiate(bytes, imports))
+    .then((results) => {
+      const { add1,add2,add3, get_timestamp } = results.instance.exports
+
+    let yyy1 = add1(5, 6);
+    let yyy2 = add2(5, 6);
+    let yyy3 = add3(5, 6);
+
+    www = get_timestamp();
+
+    console.log(yyy1)
+    console.log(yyy2)
+    console.log(yyy3)
+      // 追加
+    console.log(www)
+
+    let setMoji = "<br><br><br><br>\n" +
+                    "<p>" + yyy1 + " T=" + www + "</p>" +
+                    "<p>" + yyy2 + "</p>" +
+                    "<p>" + yyy3 + "</p>" +
+                    "<img src='./images/img002.gif'><br>\n" +
+                    "<p>" + www + "</p>";
+
+    document.getElementById('mangaPic').innerHTML = setMoji;
+  });
+}
+
+
+
+
+   function abc(iPageNo){
+      console.log(iPageNo);
+   }
+
+function doAAAAA(){
+	  console.log("********doAAAAA*******************");
+
+
+}
+
+
+
+
+  </script>
+
+
+
+
+
+
+</head>
+<body>
+ああああああいい
+
+			<div id='flickscroll'>
+				<ul id='mangaPic'>
+				</ul>
+			</div>
+
+			<div id='btn00'>
+				<ul id='btn01'>
+          <a href='#' data-rel='back' class='ui-btn ui-corner-all ui-btn-inline ui-mini m16' onclick='doBBBBB()'>OK</a>
+				</ul>
+			</div>
+
+
+
+
+
+
+</body>
+
+</html>
