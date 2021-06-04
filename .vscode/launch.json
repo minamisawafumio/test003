@@ -1,9 +1,25 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
+    // IntelliSense を使用して利用可能な属性を学べます。time/target/debug/time.exe
     // 既存の属性の説明をホバーして表示します。
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug_time",
+            "program": "${workspaceFolder}/time/target/debug/time",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug_mongodb001",
+            "program": "${workspaceFolder}/mongodb/mongodb001/target/debug/mongodb001",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
         {
             "type": "lldb",
             "request": "launch",
@@ -22,7 +38,7 @@
             "args": [],
             "cwd": "${workspaceFolder}"
         },
-        {
+       {
             "type": "lldb",
             "request": "launch",
             "name": "Debug unit tests in executable 'test'",
